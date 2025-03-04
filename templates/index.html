@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to E-Library</h1>
+        <!-- 🔹 Left Sidebar -->
+    <div class="sidebar">
+        <h2>📚 E-Library</h2>
+        <h3>Categories</h3>
+        <ul id="category-list">
+            <li onclick="fetchBooksByCategory('Fiction')">📖 Fiction</li>
+            <li onclick="fetchBooksByCategory('Non-Fiction')">📚 Non-Fiction</li>
+            <li onclick="fetchBooksByCategory('Science')">🔬 Science</li>
+            <li onclick="fetchBooksByCategory('History')">📜 History</li>
+            <li onclick="fetchBooksByCategory('Technology')">💻 Technology</li>
+        </ul>
+
+
+        <h3>Publications</h3>
+            <ul id="publications">
+                <li onclick="fetchBooksByPublication('Penguin')">Penguin</li>
+                <li onclick="fetchBooksByPublication('Open Book Publishers')">Open Book Publishers</li>
+                <li onclick="fetchBooksByPublication('Oxford')">Oxford</li>
+                <li onclick="fetchBooksByPublication('Scholastic')">Scholastic</li>
+                <li onclick="fetchBooksByPublication('Cambridge')">Cambridge</li>
+            </ul>
+        
+
+
+
+        <h2>⭐ My Bookmarks</h2>
+            <ul id="bookmarks-list"></ul>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+
+    </div>
+
+    <!-- 🔹 Right Content -->
+    <div class="main-content">
+        <h2>All Books</h2>
+        <div class="book-grid" id="book-list"></div>
+        <button class="load-more-btn" onclick="loadMoreBooks()">Load More</button>
+        
+    </div>
+    
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

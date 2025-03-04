@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - E-Library System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body, html {
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        /* Navigation Bar (Unified, Transparent) */
+        .navbar {
+            width: 100%;
+            padding: 15px 50px;
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+            backdrop-filter: blur(10px); /* Smooth glass effect */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        .navbar ul li {
+            display: inline;
+        }
+        .navbar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .navbar ul li a:hover {
+            color: #007bff;
+        }
+        /* Main Content */
+        .container {
+            display: flex;
+            position: fixed;
+            top: 60px; /* Below Navbar */
+            left: 0;
+            width: 100%;
+            height: calc(100vh - 60px);
+        }
+        /* Left Side (Unified Background) */
+        .left-content {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+            text-align: left;
+            background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0.8)); /* Soft merge */
+        }
+        .left-content h1 {
+            font-size: 40px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .left-content p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.5;
+        }
+        /* Right Side (Background & Merged Login Box) */
+        .right-content {
+            width: 50%;
+            background: url("{{ url_for('static', filename='2.jpg') }}") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        /* Overlay to merge form & image */
+        .right-content::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+        /* Login Box (Blended with Background) */
+        .login-container {
+            background: rgba(255, 255, 255, 0.15); /* Light transparent effect */
+            backdrop-filter: blur(10px); /* Smooth glass effect */
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            display: block;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        p a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar (Unified Look) -->
+    <nav class="navbar">
+        <div class="logo">📚 E-Library System</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Side - E-Library Information -->
+        <div class="left-content">
+            <h1>Access Your E-Library</h1>
+            <p>Log in to explore thousands of books, research papers, and learning materials. Your digital library is just one step away.</p>
+        </div>
+
+        <!-- Right Side - Login Form -->
+        <div class="right-content">
+            <div class="login-container">
+                <h2>🔐 Login</h2>
+                <input type="email" id="login-email" placeholder="Email">
+                <input type="password" id="login-password" placeholder="Password">
+                <button onclick="loginUser()">Login</button>
+                <p>Don't have an account? <a href="/register">Register</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
